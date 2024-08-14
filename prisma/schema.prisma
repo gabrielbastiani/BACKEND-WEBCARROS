@@ -25,3 +25,21 @@ model User {
 
   @@map("users")
 }
+
+model Car {
+  id              String @id @default(uuid())
+  image_car       Json
+  name            String @db.VarChar(500)
+  model_car       String @db.VarChar(500)
+  year_car        String @db.VarChar(50)
+  km_car          String @db.VarChar(70)
+  whatsapp        String @db.VarChar(50)
+  city            String @db.VarChar(200)
+  price_car       String @db.VarChar(50)
+  description_car String
+
+  created_at DateTime? @default(now()) @db.Timestamptz(3)
+  updated_at DateTime? @updatedAt
+
+  @@map("cars")
+}

@@ -8,6 +8,10 @@ import { CreateUserController } from "./controllers/user/CreateUserController";
 import { DetailUserController } from "./controllers/user/DetailUserController";
 import { AuthUserController } from "./controllers/user/AuthUserController";
 
+// -- CARS -- //
+import { CreateNewCarController } from "./controllers/car/CreateNewCarController";
+import { ListAllCarsHomeController } from "./controllers/car/ListAllCarsHomeController";
+
 
 
 
@@ -20,6 +24,10 @@ const upload = multer(uploadConfig.upload("./images"));
 router.post('/create_user', new CreateUserController().handle);
 router.post('/session', new AuthUserController().handle);
 router.get('/me', isAuthenticated, new DetailUserController().handle);
+
+// -- CARS -- //
+router.post('/create_car', isAuthenticated, upload.array('files', 15), new CreateNewCarController().handle);
+router.get('/list_all_cars_home', new ListAllCarsHomeController().handle);
 
 
 export { router }
