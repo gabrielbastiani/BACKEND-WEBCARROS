@@ -11,6 +11,8 @@ import { AuthUserController } from "./controllers/user/AuthUserController";
 // -- CARS -- //
 import { CreateNewCarController } from "./controllers/car/CreateNewCarController";
 import { ListAllCarsHomeController } from "./controllers/car/ListAllCarsHomeController";
+import { UserListAllCarsHomeController } from "./controllers/car/UserListAllCarsHomeController";
+import { DeleteCarUserController } from "./controllers/car/DeleteCarUserController";
 
 
 
@@ -28,6 +30,8 @@ router.get('/me', isAuthenticated, new DetailUserController().handle);
 // -- CARS -- //
 router.post('/create_car', isAuthenticated, upload.array('files', 15), new CreateNewCarController().handle);
 router.get('/list_all_cars_home', new ListAllCarsHomeController().handle);
+router.get('/user_cars', isAuthenticated, new UserListAllCarsHomeController().handle);
+router.delete('/delete_car_user', isAuthenticated, new DeleteCarUserController().handle);
 
 
 export { router }

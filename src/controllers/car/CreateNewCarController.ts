@@ -4,6 +4,7 @@ import { CreateNewCarService } from "../../services/car/CreateNewCarService";
 class CreateNewCarController {
     async handle(req: Request, res: Response) {
         const {
+            user_id,
             name,
             model_car,
             year_car,
@@ -22,6 +23,7 @@ class CreateNewCarController {
             const image_car = req.files.map((file: Express.Multer.File) => file.filename);
 
             const car_image = await image_car_web.execute({
+                user_id,
                 image_car,
                 name,
                 model_car,

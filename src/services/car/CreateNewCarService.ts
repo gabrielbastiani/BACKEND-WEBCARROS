@@ -1,7 +1,8 @@
 import prismaClient from "../../prisma";
 
 interface CarRequest {
-    image_car: string[]; // Array de strings para armazenar os nomes dos arquivos
+    user_id: string;
+    image_car: string[];
     name: string;
     model_car: string;
     year_car: string;
@@ -14,6 +15,7 @@ interface CarRequest {
 
 class CreateNewCarService {
     async execute({
+        user_id,
         image_car,
         name,
         model_car,
@@ -26,6 +28,7 @@ class CreateNewCarService {
     }: CarRequest) {
         const car = await prismaClient.car.create({
             data: {
+                user_id,
                 image_car: {
                     set: image_car,
                 },
