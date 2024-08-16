@@ -13,6 +13,7 @@ import { CreateNewCarController } from "./controllers/car/CreateNewCarController
 import { ListAllCarsHomeController } from "./controllers/car/ListAllCarsHomeController";
 import { UserListAllCarsHomeController } from "./controllers/car/UserListAllCarsHomeController";
 import { DeleteCarUserController } from "./controllers/car/DeleteCarUserController";
+import { FindUniqueCarController } from "./controllers/car/FindUniqueCarController";
 
 
 
@@ -32,6 +33,7 @@ router.post('/create_car', isAuthenticated, upload.array('files', 15), new Creat
 router.get('/list_all_cars_home', new ListAllCarsHomeController().handle);
 router.get('/user_cars', isAuthenticated, new UserListAllCarsHomeController().handle);
 router.delete('/delete_car_user', isAuthenticated, new DeleteCarUserController().handle);
+router.get('/car_details_home', new FindUniqueCarController().handle);
 
 
 export { router }
