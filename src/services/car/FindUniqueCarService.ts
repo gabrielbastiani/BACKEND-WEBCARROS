@@ -11,7 +11,11 @@ class FindUniqueCarService {
                 id: car_id
             },
             include: {
-                user: true
+                user: {
+                    select: {
+                        created_at: true, email: true, id: true, name: true, slug_name: true
+                    }
+                }
             }
         });
 
